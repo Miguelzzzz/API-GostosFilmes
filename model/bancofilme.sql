@@ -6,7 +6,7 @@ create table tbCliente (
     email varchar(200) not null,
     cidade varchar(60) not null,
     telefone varchar(18) not null,
-	cinemaFrequentado varchar(100) not null,
+    cinemaFrequentado varchar(100) not null,
     precoIngresso decimal(5, 2) not null,
     codCliente int primary key auto_increment not null
 ) default charset = utf8;
