@@ -20,7 +20,7 @@ create table tbgostosfilmes (
     filmeSequencia varchar(60) not null,
     codCliente int not null,
     codGostos int primary key auto_increment not null,
-    constraint FKcodCliente foreign key (codCliente) references tbCliente (codCliente)
+    constraint FKcodCliente foreign key (codCliente) references tbCliente (codCliente) on delete cascade
 ) default charset = utf8;
 
 -- select * from tbCliente;
