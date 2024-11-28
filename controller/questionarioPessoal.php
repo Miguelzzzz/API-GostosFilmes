@@ -52,6 +52,11 @@ if (isset($_REQUEST["acao"])){
         $pessoal->nomeCliente = $_POST['nome'];
         echo json_encode($pessoal->retornarDadosNome());
     break;
+
+    case 'retorna_nome_din':
+        $pessoal->nomeCliente = $_POST['nomeCliente'];
+        echo json_encode($pessoal->retornarDadosNomeDinamico());
+    break;
     }
 }
 ?>

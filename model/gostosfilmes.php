@@ -117,5 +117,28 @@ class GostosFilmes implements JsonSerializable{
         $gostos->codGostos = $value["codGostos"];
         return $gostos;
         }   
+
+    function retornarDadosCodigoDinamico(){
+        $comandoSql = "select * from tbgostosfilmes where filmeFavorito like ?";
+        $valores = array("%".$this->filmeFavorito."%");
+        $exec = $this->con->prepare($comandoSql);
+        $exec->execute($valores);
+
+        foreach ($exec->fetchAll(PDO::FETCH_ASSOC) as $value) {
+            $gostos = new self();
+            $gostos->filmeFavorito = $value["filmeFavorito"];
+            $gostos->generoFavorito = $value["generoFavorito"];
+            $gostos->filmeOdiado = $value["filmeOdiado"];
+            $gostos->generoOdiado = $value["generoOdiado"];
+            $gostos->atorFavorito = $value["atorFavorito"];
+            $gostos->filmeSequencia = $value["filmeSequencia"];
+            $gostos->codCliente = $value["codCliente"];
+            $gostos->codGostos = $value["codGostos"];
+            $dados[] = $gostos;
+        }
+        return $dados;
+        }
+
+
     }
 ?>

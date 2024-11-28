@@ -116,6 +116,27 @@ class Pessoal implements JsonSerializable {
         }
         return $this;
     }
-}
+    
+    function retornarDadosNomeDinamico(){
+        $comandoSql = "select * from tbCliente where nomeCliente like ?";
+        $valores = array("%".$this->nomeCliente."%");
+        $exec = $this->con->prepare($comandoSql);
+        $exec->execute($valores);
 
+        foreach ($exec->fetchAll(PDO::FETCH_ASSOC) as $value) {
+            $infos = new self();
+            $infos->nomeCliente = $value["nomeCliente"];
+            $infos->email = $value["email"];
+            $infos->cidade = $value["cidade"];
+            $infos->telefone = $value["telefone"];
+            $infos->cinemaFrequentado = $value["cinemaFrequentado"];
+            $infos->precoIngresso = $value["precoIngresso"];
+            $infos->codCliente = $value["codCliente"];
+            $dados[] = $infos;
+        }
+        return $dados;
+        }
+
+
+    }
 ?>

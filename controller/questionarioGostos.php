@@ -48,7 +48,11 @@ if (isset($_REQUEST["acao"])){
             $gostos->codGostos = $_POST['codigo'];
             echo json_encode($gostos->retornarDados());
         break;
-    }
-}
 
-?>
+        case 'retorna_nome_din':
+            $gostos->filmeFavorito = $_POST['filmeFavorito'];
+            echo json_encode($gostos->retornarDadosCodigoDinamico());
+        break;
+        }
+    }
+    ?>
